@@ -44,21 +44,23 @@ function SingleTodo({ id, todo, isDone }: Todo) {
           <span>{todo}</span>
         </Grid>
       )}
-      {!isDone && <Grid item>
-        <IconButton onClick={handleEdit}>
-          <EditTwoTone />
-        </IconButton>
-      </Grid>}
+      {!isDone && (
+        <Grid item>
+          <IconButton onClick={handleEdit}>
+            <EditTwoTone />
+          </IconButton>
+        </Grid>
+      )}
       <Grid item>
         <IconButton onClick={() => dispatch(removeTodo(id))}>
           <Delete />
         </IconButton>
       </Grid>
-      <Grid item>
+      {!edit && <Grid item>
         <IconButton onClick={() => dispatch(setDone(id))}>
           <Check />
         </IconButton>
-      </Grid>
+      </Grid>}
     </Grid>
   );
 }
